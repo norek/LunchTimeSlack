@@ -3,9 +3,17 @@ exports.about = function(){
 };
 
 exports.help = function(){
-    return 'Lista komend: ' +
-            'About - informacje o aplikacji' 
-        +  'Menu - przedstawia aktualne menu'
-        +  'Phone - dane adresowe do restauracji'
+    return 'Lista komend: \n' +
+            'About - informacje o aplikacji\n' 
+        +  'Menu - przedstawia aktualne menu\n'
+        +  'Phone - dane adresowe do restauracji\n'
         +  'Random - wybiera losową potrawę z menu';
+}
+
+exports.unknownCommand = function(){
+    return "unknown command";
+}
+
+exports.order = function(){
+    
 }
