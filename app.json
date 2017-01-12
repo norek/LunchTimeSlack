@@ -2,6 +2,7 @@
   "name": "LunchTimeSlack",
   "description": "",
   "scripts": {
+    "start": "node app.js"
   },
   "env": {
   },
