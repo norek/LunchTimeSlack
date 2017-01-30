@@ -2,19 +2,28 @@
 const messages = require('../messages.js');
 const command = require('./slackresponse.js');
 const orderParser = require('./orderParser.js');
+// const parseResultType = require('./parserResultType.js');
 
-exports.parse = function(text){
-    
-    let responseText = '';
+const notFoundCommand = require('./commands/notFoundCommand.js');
+const helpCommand = require('./commands/helpCommand.js');
+const aboutCommand = require('./commands/aboutCommand.js');
+const orderCommandListCommand = require('./commands/order/orderCommandListCommand.js');
 
-    if(text == 'about'){
-        responseText = command.about();
-    }else if(text == 'help'){
-        responseText = command.help();
-    }else if(text.include('order')){
-        responseText = command.order(text);
+exports.parse = function (text) {
+
+    if(text === undefined || text === null){
+        text = '';
     }
-    else{
-        responseText = command.unknownCommand();
+
+    let commandText = text.toLowerCase();
+
+    if(commandText.indexOf('help') == 0){
+        return helpCommand;
+    }else if(commandText === 'about'){
+        return aboutCommand;
+    }else if(commandText == 'order'){
+        return orderCommandListCommand;
     }
+
+    return notFoundCommand;
 }

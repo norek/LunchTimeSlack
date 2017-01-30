@@ -10,13 +10,19 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 app.set('port', (process.env.PORT || 5000));
 
-mongoose.connect('mongodb://localhost/lunchtime');
+// mongoose.connect('mongodb://localhost/lunchtime');
 
 app.get('/', function (req, res) {
   res.send('Hello world v2')
 });
 
-app.post('/lunch',(req,res) => {
+app.get('/api/', function (req, res) {
+  res.sendStatus(200);
+});
+
+
+
+app.post('/api/lunch',(req,res) => {
 
     let text = req.body.text;
     let responseText = parser.parse(text);
@@ -26,7 +32,7 @@ app.post('/lunch',(req,res) => {
         text: responseText        
     };
 
-    res.json(response);
+    res.json(returnValue);
     console.log(text);
     
 
