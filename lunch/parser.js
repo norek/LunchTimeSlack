@@ -1,13 +1,11 @@
 'use strict';
-const messages = require('../messages.js');
-const command = require('./slackresponse.js');
-const orderParser = require('./orderParser.js');
-// const parseResultType = require('./parserResultType.js');
 
 const notFoundCommand = require('./commands/notFoundCommand.js');
 const helpCommand = require('./commands/helpCommand.js');
 const aboutCommand = require('./commands/aboutCommand.js');
 const orderCommandListCommand = require('./commands/order/orderCommandListCommand.js');
+const orderBeginCommand = require('./commands/order/orderBeginCommand.js');
+const orderEndsCommand = require('./commands/order/orderEndsCommand.js');
 
 exports.parse = function (text) {
 
@@ -23,6 +21,10 @@ exports.parse = function (text) {
         return aboutCommand;
     }else if(commandText == 'order'){
         return orderCommandListCommand;
+    }else if(commandText === 'order begin'){
+        return orderBeginCommand;
+    }else if(commandText === 'order end'){
+        return orderEndsCommand;
     }
 
     return notFoundCommand;

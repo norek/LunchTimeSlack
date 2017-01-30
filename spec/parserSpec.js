@@ -54,6 +54,19 @@ describe("Api input parser should", function () {
             expect('orderCommandListCommand').toEqual(resultCommand.name);
             done();
         });
+
+        it("return orderbegin command when command order begin is typed", function (done) {
+            var resultCommand = parser.parse("order begin");
+            expect('orderBeginCommand').toEqual(resultCommand.name);
+            done();
+        });
+
+        it("return orderEnds command when command order ends is typed", function (done) {
+            var resultCommand = parser.parse("order end");
+            expect('orderEndsCommand').toEqual(resultCommand.name);
+            done();
+        });
+
     });
 
 });
